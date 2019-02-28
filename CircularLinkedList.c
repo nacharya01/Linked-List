@@ -21,12 +21,13 @@ struct node * createNewNode(){
  temp= (struct node *) malloc(sizeof(struct node));
  return temp;
 }
-void addAtBeg(struct node *last,int value){
+struct node* addAtBeg(struct node *last,int value){
   struct node * temp;
   temp=createNewNode();
   temp->info=value;
   temp->next=last->next;
   last->next=temp;
+  return (last);
 }
 void displayList(struct node * last){
   struct node * n;
@@ -41,18 +42,19 @@ void displayList(struct node * last){
     }while(n!=last->next);
   }
 }
-void createList(struct node * last){
+struct node * createList(struct node * last){
   int value,n;
   printf("Enter how many numbers do you want to add\n");
   scanf("%d",&n);
   printf("Enter the first number that you want to add to the empty list \n");
   scanf("%d",&value);
-  addToEmpty(last,value);
+  last=addToEmpty(last,value);
   printf("Enter the numbers that you want to add in your list\n");
   for(int i=2;i<=n;i++){
     scanf("%d",&value);
-    addAtEnd(last,value);
+    last=addAtEnd(last,value);
   }
+  return (last);
 }
 
 struct node * addToEmpty(struct node *last,int value){
