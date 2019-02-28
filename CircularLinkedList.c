@@ -54,24 +54,26 @@ void createList(struct node * last){
   }
 }
 
-void addToEmpty(struct node *last,int value){
+struct node * addToEmpty(struct node *last,int value){
   struct node *t;
   t=createNewNode();
   t->info=value;
   last=t;
   t->next=last;
+  return (last);
 }
 
-void addAtEnd(struct node *last, int value){
+struct node* addAtEnd(struct node *last, int value){
   struct node *temp;
   temp=createNewNode();
   temp->info=value;
   temp->next=last->next;
   last->next=temp;
   last=temp;
+  return(last);
 }
 
-void addAtAny(struct node * last,int value,int valueAfter){
+struct node * addAtAny(struct node * last,int value,int valueAfter){
   struct node * temp;
   temp=createNewNode();
   struct node * t;
@@ -83,6 +85,7 @@ void addAtAny(struct node * last,int value,int valueAfter){
       t->next=temp;
       if(t==last){
         last=temp;
+        return (last);
       }
     }
     t=t->next;
@@ -90,18 +93,20 @@ void addAtAny(struct node * last,int value,int valueAfter){
   }while(t!=last->next);
 }
 
-void deletion(struct node * last,int value){
+struct node* deletion(struct node * last,int value){
   struct node * t,*p; 
   
   if(last==last->next && last->info){
     t=last;
     last=NULL;
     free(t);
+    return (last);
   }
   if(last->next->info==value){
     t=last->next;
     t->next=last->next;
     free(t);
+    return (last);
   } 
   p=last->next;
   while(p->next!=last){
@@ -109,6 +114,7 @@ void deletion(struct node * last,int value){
       t=p->next;
       p->next=t->next;
       free(t);
+      return last;
     }
     p=p->next;
   }
@@ -116,8 +122,9 @@ void deletion(struct node * last,int value){
     t=last;
     p->next=last->next;
     free (t);
+    return (last);
   }
-    
+  return (last);
 }
 
 
@@ -135,21 +142,21 @@ int main(){
     switch(choice){
       case 1: printf("Enter a number that you want to add to empty list \n");
                scanf("%d",&value);
-               addToEmpty(last,value);
+               last=addToEmpty(last,value);
                break;
       case 2: printf ("Enter a number that you want to add at Begin\n");
                scanf("%d",&value);
-               addAtBeg(last,value);
+               last=addAtBeg(last,value);
                break;
       case 3: printf("Enter a number that you want to add at the end \n");
                scanf("%d",&value);
-               addAtEnd(last,value);
+               last=addAtEnd(last,value);
                break;
       case 4: printf("Enter a value before that number to be deleted \n");
                scanf("%d",&valueAfter);
-               deletion(last,valueAfter);
+               last=deletion(last,valueAfter);
                break;
-      case 5: createList(last);
+      case 5: last=createList(last);
                break;
       case 6: exit(0);
                break;
