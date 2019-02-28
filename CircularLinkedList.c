@@ -15,6 +15,31 @@ struct node {
   struct node *next;
 };
 
+struct node * createNewNode(){
+  struct node * temp;
+ temp= (struct node *) malloc(sizeof(struct node));
+ return temp;
+}
+void addAtBeg(struct node *last,int value){
+  struct node * temp;
+  temp=createNewNode();
+  temp->info=value;
+  temp->next=last->next;
+  last->next=temp;
+}
+void displayList(struct node * last){
+  struct node * n;
+  n=last->next;
+  if(last==NULL){
+    printf("List is empty ");
+  }
+  else{
+    do{
+    printf("%d ",n->info);
+    n=n->next;
+    }while(n!=last->next);
+  }
+}
 void createList(struct node * last){
   int value,n;
   printf("Enter how many numbers do you want to add\n");
@@ -29,44 +54,18 @@ void createList(struct node * last){
   }
 }
 
-struct node * createNewNode(){
-  struct node * temp;
- temp= (struct node *) malloc(sizeof(struct node));
- return temp;
-}
-
 void addToEmpty(struct node *last,int value){
   struct node *t;
   t=createNewNode();
-    last=t;
-    t->next=last;
-    last->info=value;
-}
-
-void addAtBeg(struct node *last,int value){
-  struct node * temp;
-  temp=createNewNode();
-  if(last!=NULL){
-    temp->next=last->next;
-    last->next=temp;
-    temp->info=value;
-  }
-  else{
-    int choice;
-    printf("Your list is empty.So, If you wanna choose the option to add element to Empty. Then enter 1");
-    scanf("%d",&choice);
-    if(choice==1){
-      addToEmpty(last,value);
-    }
-    else{
-      exit(0);
-    }
- }
+  last->info=value;
+  last=t;
+  t->next=last;
 }
 
 void addAtEnd(struct node *last, int value){
   struct node *temp;
   temp=createNewNode();
+  temp->info=value;
   temp->next=last->next;
   last->next=temp;
   last=temp;
@@ -77,13 +76,18 @@ void addAtAny(struct node * last,int value,int valueAfter){
   temp=createNewNode();
   struct node * t;
   t=last->next;
-  while(t!=last->next){
+  do{
     if(t->info==valueAfter){
+      temp->info=value;
       temp->next=t->next;
       t->next=temp;
+      if(t==last){
+        last=temp;
+      }
     }
     t=t->next;
-  }
+
+  }while(t!=last->next);
 }
 
 void deletion(struct node * last,int value){
@@ -115,14 +119,7 @@ void deletion(struct node * last,int value){
   }
     
 }
-void displayList(struct node * last){
-  struct node * n;
-  n=last->next;
-  while(n!=last->next){
-    printf("%d ",n->info);
-    n=n->next;
-  }
-}
+
 
 int main(){
   struct node * last= NULL;
