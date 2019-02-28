@@ -4,11 +4,12 @@
 #include <stdbool.h>
 
 struct node * createNewNode();
-void addToEmpty(struct node* ,int);
-void addAtEnd(struct node * , int);
-void addAtAny(struct node * ,int,int);
-void deletion(struct node * ,int);
-void createList(struct node * );
+struct node * addToEmpty(struct node* ,int);
+struct node * addAtEnd(struct node * , int);
+struct node * addAtAny(struct node * ,int,int);
+struct node * deletion(struct node * ,int);
+struct node * createList(struct node * );
+void displayList(struct node *);
 
 struct node {
   int info;
