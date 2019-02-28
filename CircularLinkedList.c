@@ -8,6 +8,7 @@ void addToEmpty(struct node* ,int);
 void addAtEnd(struct node * , int);
 void addAtAny(struct node * ,int,int);
 void deletion(struct node * ,int);
+void createList(struct node * );
 
 struct node {
   int info;
@@ -37,11 +38,9 @@ struct node * createNewNode(){
 void addToEmpty(struct node *last,int value){
   struct node *t;
   t=createNewNode();
-  if(last==NULL){
     last=t;
     t->next=last;
     last->info=value;
-  }
 }
 
 void addAtBeg(struct node *last,int value){
@@ -124,7 +123,7 @@ void displayList(struct node * last){
   }
 }
 
-void main(){
+int main(){
   struct node * last= NULL;
   int value,choice,valueAfter;
   printf("1. Enter to add number to empty list\n");
