@@ -86,33 +86,34 @@ void addAtAny(struct node * last,int value,int valueAfter){
   }
 }
 
-void deletion(struct node * last,int valueAfter){
-  struct node * t; 
-  if(last->next->info==valueAfter){
+void deletion(struct node * last,int value){
+  struct node * t,*p; 
+  
+  if(last==last->next && last->info){
+    t=last;
+    last=NULL;
+    free(t);
+  }
+  if(last->next->info==value){
     t=last->next;
     t->next=last->next;
     free(t);
-  }
-  else if(last->info==valueAfter){
-    struct node * temp;
-    temp=last->next;
-    while(temp!=last){
-      temp=temp->next;
+  } 
+  p=last->next;
+  while(p->next!=last){
+    if(p->next->info==value){
+      t=p->next;
+      p->next=t->next;
+      free(t);
     }
-    temp->next=last->next;
-    last=temp;
+    p=p->next;
   }
-  else{
-    struct node * p=last->next;
-    for(struct node * i=p->next;i<last;i=i->next){
-      if(i->info==valueAfter){
-        struct node * p1;
-        p1=i->next;
-        i->next=p1->next;
-        free(p1);
-      }
-    }
+  if(last->info==value){
+    t=last;
+    p->next=last->next;
+    free (t);
   }
+    
 }
 void displayList(struct node * last){
   struct node * n;
