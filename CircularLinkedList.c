@@ -97,8 +97,8 @@ struct node * addAtAny(struct node * last,int value,int valueAfter){
 }
 
 struct node* deletion(struct node * last,int value){
-  struct node * t,*p; 
-  
+  struct node * t,*p;
+
   if(last==last->next && last->info){
     t=last;
     last=NULL;
@@ -110,7 +110,7 @@ struct node* deletion(struct node * last,int value){
     t->next=last->next;
     free(t);
     return (last);
-  } 
+  }
   p=last->next;
   while(p->next!=last){
     if(p->next->info==value){
@@ -133,13 +133,14 @@ struct node* deletion(struct node * last,int value){
 
 int main(){
   struct node * last= NULL;
-  int value,choice,valueAfter;
+  int value,choice;
   printf("1. Enter to add number to empty list\n");
   printf("2. Enter to add number at begin\n");
   printf("3. Enter to add number to end \n");
   printf("4. Enter to delete the number after a particular value\n");
   printf("5. Enter to create the list\n");
   printf("6. Enter to exit the programming \n");
+  printf("7. Enter to display the lists\n");
   scanf("%d",&choice);
   while(1){
     switch(choice){
@@ -156,15 +157,19 @@ int main(){
                last=addAtEnd(last,value);
                break;
       case 4: printf("Enter a value before that number to be deleted \n");
-               scanf("%d",&valueAfter);
-               last=deletion(last,valueAfter);
+               scanf("%d",&value);
+               last=deletion(last,value);
                break;
       case 5: last=createList(last);
                break;
       case 6: exit(0);
                break;
+      case 7: displayList(last);
+              break;
       default : printf("Invalid Entry\n");
     }
   }
+  getch();
+  return 0;
 }
 
