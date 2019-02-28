@@ -57,7 +57,7 @@ void addAtBeg(struct node *last,int value){
     printf("Your list is empty.So, If you wanna choose the option to add element to Empty. Then enter 1");
     scanf("%d",&choice);
     if(choice==1){
-      addtoEmpty(last,value);
+      addToEmpty(last,value);
     }
     else{
       exit(0);
