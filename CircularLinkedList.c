@@ -49,8 +49,8 @@ struct node * createList(struct node * last){
   printf("Enter the first number that you want to add to the empty list \n");
   scanf("%d",&value);
   last=addToEmpty(last,value);
-  printf("Enter the numbers that you want to add in your list\n");
   for(int i=2;i<=n;i++){
+     printf("Enter the numbers that you want to add in your list\n");
     scanf("%d",&value);
     last=addAtEnd(last,value);
   }
@@ -141,9 +141,9 @@ int main(){
   printf("5. Enter to create the list\n");
   printf("6. Enter to exit the programming \n");
   printf("7. Enter to display the lists\n");
+  printf("Enter your choice : ");
   scanf("%d",&choice);
-  while(1){
-    switch(choice){
+  switch(choice){
       case 1: printf("Enter a number that you want to add to empty list \n");
                scanf("%d",&value);
                last=addToEmpty(last,value);
@@ -167,9 +167,8 @@ int main(){
       case 7: displayList(last);
               break;
       default : printf("Invalid Entry\n");
-    }
-  }
-  getch();
-  return 0;
+ }
+ getch();
+ return 0;
 }
 
