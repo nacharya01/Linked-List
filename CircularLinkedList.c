@@ -146,7 +146,7 @@ int main(){
   printf("Enter your choice : ");
   scanf("%d",&choice);
     switch(choice){
-      case 1: printf("Enter a number that you want to add to empty list \n");
+      case 1: printf("\nEnter a number that you want to add to empty list \n");
                scanf("%d",&value);
                last=addToEmpty(last,value);
                break;
