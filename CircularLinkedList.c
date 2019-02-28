@@ -134,6 +134,8 @@ struct node* deletion(struct node * last,int value){
 int main(){
   struct node * last= NULL;
   int value,choice;
+  int repeat=20;
+  while(1){
   printf("1. Enter to add number to empty list\n");
   printf("2. Enter to add number at begin\n");
   printf("3. Enter to add number to end \n");
@@ -143,7 +145,7 @@ int main(){
   printf("7. Enter to display the lists\n");
   printf("Enter your choice : ");
   scanf("%d",&choice);
-  switch(choice){
+    switch(choice){
       case 1: printf("Enter a number that you want to add to empty list \n");
                scanf("%d",&value);
                last=addToEmpty(last,value);
@@ -167,6 +169,7 @@ int main(){
       case 7: displayList(last);
               break;
       default : printf("Invalid Entry\n");
+   }
  }
  getch();
  return 0;
