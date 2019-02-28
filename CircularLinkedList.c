@@ -57,7 +57,7 @@ void createList(struct node * last){
 void addToEmpty(struct node *last,int value){
   struct node *t;
   t=createNewNode();
-  last->info=value;
+  t->info=value;
   last=t;
   t->next=last;
 }
