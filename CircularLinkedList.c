@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include<conio.h>
 
 struct node * createNewNode();
 struct node * addToEmpty(struct node* ,int);
@@ -136,7 +137,7 @@ int main(){
   int value,choice;
   int repeat=20;
   while(1){
-  printf("1. Enter to add number to empty list\n");
+  printf("\n1. Enter to add number to empty list\n");
   printf("2. Enter to add number at begin\n");
   printf("3. Enter to add number to end \n");
   printf("4. Enter to delete the number after a particular value\n");
